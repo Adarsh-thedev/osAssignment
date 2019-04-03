@@ -4,40 +4,40 @@ Each process should be provided numerical priority(higher the number higher the 
 If a process is preemted with a higher priority process-> add it to end of queue*/
 #include<stdio.h>
 int main(){
-    int n, time, timeQuantom, remain, i, j, flag=0, waitingTime=0, turnAroundTime=0;
-    int arrivalTime[10], remainingTime[10], burstTime[10], priorityOfProcess[10];
+    int n, time, timeQuantum, remain, i, j, flag=0, waitingTime=0, turnAroundTime=0;
+    int arrivalTime[20], remainingTime[20], burstTime[20], priorityOfSchedule[20];
 
     // ask the user for number of processes
     printf("Enter the number of processes : ");
     scanf("%d",&n);
     remain = n; //initially remainig process=total number of processes
 
-    // ask user for arrival time,burst time and priority for every process
+    // ask user for arrival time,burst time for every process
     for(i=0; i<n; i++){
         printf("Enter arrival time,burst time and priority of process %d : ",i+1);
         scanf("%d", &arrivalTime[i]);
         scanf("%d", &burstTime[i]);
-        //scanf("%d", &priorityOfProcess[i]);
         //initially set remaining time of the process=burst time
+        //scanf("%d", &priorityOfSchedule[i]);
         remainingTime[i]=burstTime[i];
     }
 
-    // ask user for time quantom of each process
-    printf("Enter time quantom of processes : ");
-    scanf("%d", &timeQuantom);
+    // ask user for time quantum of each process
+    printf("Enter time quantum of for a process : ");
+    scanf("%d", &timeQuantum);
 
     printf("\n\nProcess\t:TurnAround Time:Waiting Time\n\n");
     for(time=0, i=0; remain!=0;){  //  loop will run until vlaue of remain equals to 0 or no process is remained
-        if(remainingTime[i]<=timeQuantom&&remainingTime[i]>0){
+        if(remainingTime[i]<=timeQuantum&&remainingTime[i]>0){
             time = time+remainingTime[i];  //if burst time <= time quantum then total time taken by the process
             // is burst time itself
             remainingTime[i]=0;
             flag = 1;
         }
-        else if(remainingTime[i]>0 /*&& remainingTime>timeQuantom*/){
-            remainingTime[i] = remainingTime[i] - timeQuantom; // if burst time>time quantum,
+        else if(remainingTime[i]>0 /*&& remainingTime>timeQuantum*/){
+            remainingTime[i] = remainingTime[i] - timeQuantum; // if burst time>time quantum,
             // decrease remaining time by time quantum
-            time = time + timeQuantom;
+            time = time + timeQuantum;
             // increase total time of execution by one time quantum
         }
 
@@ -65,7 +65,7 @@ int main(){
     // now we have turnAroundTime= sum of all TATs and waitingTime=sum of all WTs
     float averageTurnaroundTime, averageWaitingTime;
     averageTurnaroundTime = 1.0 * turnAroundTime /n; 
-    averageWaitingTime = 1.0 * waitingTime;
+    averageWaitingTime = 1.0 * waitingTime/n;
 
     printf("Average turnaround time = %f\n",averageTurnaroundTime);
     printf("Average waiting time = %f\n",averageWaitingTime);
