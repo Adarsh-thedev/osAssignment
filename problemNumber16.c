@@ -1,11 +1,15 @@
-/*CPU schedules N processes which arrive at diff time intervals
-each process is allocated the CPU for a specific time unit according to user input(preemptive Round Robin)
-Each process should be provided numerical priority(higher the number higher the priority is)
-If a process is preemted with a higher priority process-> add it to end of queue*/
+/* Design a schedular that can schedule the processes arriving system at periodical order
+Every process is assigned a fixed time slice
+If it is unable to completeb its execution in fixed time slice thrn automated timer generates interrupt
+                                     ->(Round Robin)
+schedular will select next process
+Compute avg waiting and turn around time
+Take input from user of   -> burst time, arrival time and time quantum */
+
 #include<stdio.h>
 int main(){
     int n, time, timeQuantum, remain, i, j, flag=0, waitingTime=0, turnAroundTime=0;
-    int arrivalTime[20], remainingTime[20], burstTime[20], priorityOfSchedule[20];
+    int arrivalTime[20], remainingTime[20], burstTime[20];
 
     // ask the user for number of processes
     printf("Enter the number of processes : ");
@@ -14,11 +18,10 @@ int main(){
 
     // ask user for arrival time,burst time for every process
     for(i=0; i<n; i++){
-        printf("Enter arrival time,burst time and priority of process %d : ",i+1);
+        printf("Enter arrival time and burst time of process %d : ",i+1);
         scanf("%d", &arrivalTime[i]);
         scanf("%d", &burstTime[i]);
         //initially set remaining time of the process=burst time
-        //scanf("%d", &priorityOfSchedule[i]);
         remainingTime[i]=burstTime[i];
     }
 
