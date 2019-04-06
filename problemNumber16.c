@@ -8,7 +8,7 @@ Take input from user of   -> burst time, arrival time and time quantum */
 
 #include<stdio.h>
 int main(){
-    int n, time, timeQuantum, remain, i, j, flag=0, waitingTime=0, turnAroundTime=0;
+    int n, time, timeQuantum, remain, i, flag=0, waitingTime=0, turnAroundTime=0;
     int arrivalTime[20], remainingTime[20], burstTime[20];
 
     // ask the user for number of processes
