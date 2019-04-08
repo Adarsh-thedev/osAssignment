@@ -1,8 +1,8 @@
-/* Design a schedular that can schedule the processes arriving system at periodical order
+/* Design a scheduler that can schedule the processes arriving system at periodical order
 Every process is assigned a fixed time slice
-If it is unable to completeb its execution in fixed time slice thrn automated timer generates interrupt
+If it is unable to completeb its execution in fixed time slice then automated timer generates interrupt
                                      ->(Round Robin)
-schedular will select next process
+scheduler will select next process
 Compute avg waiting and turn around time
 Take input from user of   -> burst time, arrival time and time quantum */
 
